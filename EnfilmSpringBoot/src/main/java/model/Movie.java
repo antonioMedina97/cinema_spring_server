@@ -22,16 +22,16 @@ public class Movie implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	private String img;
+	private String image;
 
 	private int rate;
 
 	private String title;
 
-	//bi-directional many-to-one association to Show
+	//bi-directional many-to-one association to Ticket
 	@OneToMany(mappedBy="movy")
 	@JsonIgnore
-	private List<Show> shows;
+	private List<Ticket> tickets;
 
 	public Movie() {
 	}
@@ -44,12 +44,12 @@ public class Movie implements Serializable {
 		this.id = id;
 	}
 
-	public String getImg() {
-		return this.img;
+	public String getImage() {
+		return this.image;
 	}
 
-	public void setImg(String img) {
-		this.img = img;
+	public void setImage(String image) {
+		this.image = image;
 	}
 
 	public int getRate() {
@@ -68,26 +68,26 @@ public class Movie implements Serializable {
 		this.title = title;
 	}
 
-	public List<Show> getShows() {
-		return this.shows;
+	public List<Ticket> getTickets() {
+		return this.tickets;
 	}
 
-	public void setShows(List<Show> shows) {
-		this.shows = shows;
+	public void setTickets(List<Ticket> tickets) {
+		this.tickets = tickets;
 	}
 
-	public Show addShow(Show show) {
-		getShows().add(show);
-		show.setMovy(this);
+	public Ticket addTicket(Ticket ticket) {
+		getTickets().add(ticket);
+		ticket.setMovy(this);
 
-		return show;
+		return ticket;
 	}
 
-	public Show removeShow(Show show) {
-		getShows().remove(show);
-		show.setMovy(null);
+	public Ticket removeTicket(Ticket ticket) {
+		getTickets().remove(ticket);
+		ticket.setMovy(null);
 
-		return show;
+		return ticket;
 	}
 
 }

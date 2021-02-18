@@ -22,7 +22,7 @@ public class Seat implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	private byte taken;
+	private boolean taken;
 
 	//bi-directional many-to-one association to Theatre
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -45,11 +45,11 @@ public class Seat implements Serializable {
 		this.id = id;
 	}
 
-	public byte getTaken() {
+	public boolean getTaken() {
 		return this.taken;
 	}
 
-	public void setTaken(byte taken) {
+	public void setTaken(boolean taken) {
 		this.taken = taken;
 	}
 

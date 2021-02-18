@@ -26,11 +26,13 @@ public class User implements Serializable {
 
 	private String name;
 
+	private String password;
+
 	private String payment;
 
 	private String phone;
 
-	private String role;
+	private int role;
 
 	private String surname;
 
@@ -66,6 +68,14 @@ public class User implements Serializable {
 		this.name = name;
 	}
 
+	public String getPassword() {
+		return this.password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
 	public String getPayment() {
 		return this.payment;
 	}
@@ -82,11 +92,11 @@ public class User implements Serializable {
 		this.phone = phone;
 	}
 
-	public String getRole() {
+	public int getRole() {
 		return this.role;
 	}
 
-	public void setRole(String role) {
+	public void setRole(int role) {
 		this.role = role;
 	}
 

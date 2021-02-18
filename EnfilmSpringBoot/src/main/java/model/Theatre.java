@@ -22,18 +22,12 @@ public class Theatre implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	@Column(name="seat_num")
-	private int seatNum;
+	private int seats;
 
 	//bi-directional many-to-one association to Seat
 	@OneToMany(mappedBy="theatre")
 	@JsonIgnore
-	private List<Seat> seats;
-
-	//bi-directional many-to-one association to Show
-	@OneToMany(mappedBy="theatre")
-	@JsonIgnore
-	private List<Show> shows;
+	private List<Seat> seatsSet;
 
 	public Theatre() {
 	}
@@ -46,56 +40,34 @@ public class Theatre implements Serializable {
 		this.id = id;
 	}
 
-	public int getSeatNum() {
-		return this.seatNum;
-	}
-
-	public void setSeatNum(int seatNum) {
-		this.seatNum = seatNum;
-	}
-
-	public List<Seat> getSeats() {
+	public int getSeats() {
 		return this.seats;
 	}
 
-	public void setSeats(List<Seat> seats) {
+	public void setSeats(int seats) {
 		this.seats = seats;
 	}
 
-	public Seat addSeat(Seat seat) {
-		getSeats().add(seat);
-		seat.setTheatre(this);
-
-		return seat;
+	public List<Seat> getSeatsSet() {
+		return this.seatsSet;
 	}
 
-	public Seat removeSeat(Seat seat) {
-		getSeats().remove(seat);
-		seat.setTheatre(null);
-
-		return seat;
+	public void setSeatsSet(List<Seat> seatsSet) {
+		this.seatsSet = seatsSet;
 	}
 
-	public List<Show> getShows() {
-		return this.shows;
+	public Seat addSeatsSet(Seat seatsSet) {
+		getSeatsSet().add(seatsSet);
+		seatsSet.setTheatre(this);
+
+		return seatsSet;
 	}
 
-	public void setShows(List<Show> shows) {
-		this.shows = shows;
-	}
+	public Seat removeSeatsSet(Seat seatsSet) {
+		getSeatsSet().remove(seatsSet);
+		seatsSet.setTheatre(null);
 
-	public Show addShow(Show show) {
-		getShows().add(show);
-		show.setTheatre(this);
-
-		return show;
-	}
-
-	public Show removeShow(Show show) {
-		getShows().remove(show);
-		show.setTheatre(null);
-
-		return show;
+		return seatsSet;
 	}
 
 }
