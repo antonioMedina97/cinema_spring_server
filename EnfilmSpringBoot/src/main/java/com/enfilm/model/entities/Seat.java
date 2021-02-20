@@ -1,10 +1,7 @@
-package model;
+package com.enfilm.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.List;
 
 
@@ -22,7 +19,7 @@ public class Seat implements Serializable {
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
 
-	private boolean taken;
+	private byte taken;
 
 	//bi-directional many-to-one association to Theatre
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -31,7 +28,6 @@ public class Seat implements Serializable {
 
 	//bi-directional many-to-one association to Ticket
 	@OneToMany(mappedBy="seat")
-	@JsonIgnore
 	private List<Ticket> tickets;
 
 	public Seat() {
@@ -45,11 +41,11 @@ public class Seat implements Serializable {
 		this.id = id;
 	}
 
-	public boolean getTaken() {
+	public byte getTaken() {
 		return this.taken;
 	}
 
-	public void setTaken(boolean taken) {
+	public void setTaken(byte taken) {
 		this.taken = taken;
 	}
 

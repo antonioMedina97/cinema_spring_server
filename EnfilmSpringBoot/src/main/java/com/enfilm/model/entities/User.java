@@ -1,4 +1,4 @@
-package model;
+package com.enfilm.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;

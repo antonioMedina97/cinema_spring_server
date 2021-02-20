@@ -1,10 +1,7 @@
-package model;
+package com.enfilm.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import java.util.List;
 
 
@@ -30,7 +27,6 @@ public class Movie implements Serializable {
 
 	//bi-directional many-to-one association to Ticket
 	@OneToMany(mappedBy="movy")
-	@JsonIgnore
 	private List<Ticket> tickets;
 
 	public Movie() {
