@@ -2,6 +2,9 @@ package com.enfilm.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -23,6 +26,7 @@ public class Theatre implements Serializable {
 
 	//bi-directional many-to-one association to Seat
 	@OneToMany(mappedBy="theatre")
+	@JsonIgnore
 	private List<Seat> seatsSet;
 
 	public Theatre() {

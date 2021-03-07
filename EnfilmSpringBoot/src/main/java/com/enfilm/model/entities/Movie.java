@@ -2,6 +2,9 @@ package com.enfilm.model.entities;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.List;
 
 
@@ -26,7 +29,8 @@ public class Movie implements Serializable {
 	private String title;
 
 	//bi-directional many-to-one association to Ticket
-	@OneToMany(mappedBy="movy")
+	@OneToMany(mappedBy="movie")
+	@JsonIgnore
 	private List<Ticket> tickets;
 
 	public Movie() {
@@ -74,14 +78,14 @@ public class Movie implements Serializable {
 
 	public Ticket addTicket(Ticket ticket) {
 		getTickets().add(ticket);
-		ticket.setMovy(this);
+		ticket.setMovie(this);
 
 		return ticket;
 	}
 
 	public Ticket removeTicket(Ticket ticket) {
 		getTickets().remove(ticket);
-		ticket.setMovy(null);
+		ticket.setMovie(null);
 
 		return ticket;
 	}

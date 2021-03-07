@@ -36,7 +36,12 @@ public class MyWebFilter implements Filter{
     	// También dejo pasar si se está requiriendo un contenido publicado en la carpeta /webapp (contenido estático: html, css, js, etc)
     	if (metodoRequerido.equalsIgnoreCase("OPTIONS") || // Si se recibe una petición options, se deja pasar por el filtro
     			uriDePeticionWeb.startsWith("/webapp") ||     // Se intenta acceder a la carpeta de contenido estático "/webapp".
-    			uriDePeticionWeb.equals("/user/autentica") || // Web de autenticado, aunque no traiga JWT en la cabecera se le permite pasar
+    			uriDePeticionWeb.equals("/user/autentica") ||
+    			uriDePeticionWeb.equals("/ticket/byUser") ||
+    			uriDePeticionWeb.equals("/movie/byId") ||
+    			uriDePeticionWeb.equals("/ticket") ||
+    			uriDePeticionWeb.equals("/user/new") ||
+    			// Web de autenticado, aunque no traiga JWT en la cabecera se le permite pasar
     			idUsuarioAutenticadoMedianteJWT != -1) {     // Cualquier petición con un JWT válido, que tenga un id de usuario encriptado
     		filterChain.doFilter(servletRequest, servletResponse);  // Permito que la ejecución del request continúe su curso
     	}

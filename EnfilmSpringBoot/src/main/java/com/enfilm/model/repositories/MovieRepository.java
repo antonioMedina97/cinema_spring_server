@@ -12,6 +12,8 @@ public interface MovieRepository extends CrudRepository<Movie, Integer> {
 	
 	
 
+	public Movie findById(int id);
+	
 	// Mensajes recibidos
 	@Query(value = "SELECT * from movies", nativeQuery = true)
 	public List<Movie> getAllMovies();

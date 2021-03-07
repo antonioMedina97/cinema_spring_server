@@ -27,7 +27,7 @@ public class Ticket implements Serializable {
 	//bi-directional many-to-one association to Movie
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="id_movie")
-	private Movie movy;
+	private Movie movie;
 
 	//bi-directional many-to-one association to Seat
 	@ManyToOne(fetch=FetchType.LAZY)
@@ -66,12 +66,12 @@ public class Ticket implements Serializable {
 		this.price = price;
 	}
 
-	public Movie getMovy() {
-		return this.movy;
+	public Movie getMovie() {
+		return this.movie;
 	}
 
-	public void setMovy(Movie movy) {
-		this.movy = movy;
+	public void setMovie(Movie movie) {
+		this.movie = movie;
 	}
 
 	public Seat getSeat() {
